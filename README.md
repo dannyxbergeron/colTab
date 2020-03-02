@@ -3,14 +3,14 @@ a table.
 
 usage:
 ```bash
- colTab -f file -c colums [options]
+ colTab -f file -c columns [options]
 ```
 
-In the -c option, this could be either the name of the column (that is found
-in the header (first line) of the table) or it could be the index of the
-column, starting from 1, but the latter must have the -i flag.
+In the -c option, this could be either the names of the columns (that is found
+in the header (first line) of the table) or it could be the indices of the
+columns, starting from 1, but the latter must have the -i flag.
 
-You can easily find the index of the columns in your file using the -I flag.
+You can easily find the indices of the columns in your file using the -I flag.
 
 Help section:
 ```
