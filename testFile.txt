@@ -1,0 +1,6 @@
+chr	start	end	score	strand	id
+1	12	15	1	+	ENSG1
+3	33	45	0	+	ENSG2
+5	44	100	1	-	ENSG3
+15	11	65	0	+	ENSG4
+22	2	51	1	-	ENSG5
