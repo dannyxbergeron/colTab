@@ -71,7 +71,7 @@ void getHeader(const string& file)
     nbCol = columns.size();
     // Get enough space in the values vector to prevent unwanted resizing
     // and be able to assign values with indices
-    values.reserve(nbCol + 1);
+    values.resize(nbCol + 1);
 }
 
 void getIndices(bool useIndices, const string& cols)

@@ -18,9 +18,11 @@ Program Options:
   -h [ --help ]                Display help menu.
   -V [ --version ]             Display program version number
   -I [ --indices ]             Display column indices of the header
-  -f [ --file ] arg            User-specified input file
+  -f [ --file ] arg            User-specified input file (use 'IN' for input
+                               stream)
   -s [ --sep ] arg (=TAB)      User-specified input separator
   --outSep arg (=same as sep)  User-specified output separator
   -c [ --cols ] arg            Columns to be displayed (seperated by a comma)
   -i [ --colIndices ]          Use column indices instead of name in -c option
+
 ```
