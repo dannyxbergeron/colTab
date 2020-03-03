@@ -62,8 +62,12 @@ void getIndices(bool useIndices, const string& cols)
     istringstream ss(cols);
     string colVal;
 
-    // Configure program to use col indices instead of names
-    if(useIndices)
+    if(cols == "")
+    {
+        for(int i = 1; i <= nbCol; i++)
+            indices.push_back(i);
+    }
+    else if(useIndices) // Configure program to use col indices instead of names
     {
         int idx;
         while(getline(ss, colVal, ','))
@@ -141,30 +145,22 @@ void init(CommandLineOptions& opts, int argc, char* argv[], const string& versio
 
     if( CommandLineOptions::OPTS_SUCCESS == temp )
     {
-        if( opts.getUserCols() == "")
-        {
-            cout << "ERROR - No columns specified" << endl;
-            exit(0);
-        }
+        // Get the separators to use
+        getSep(opts.getUserSep(), true);
+        if(opts.getUserOutSep() != "same as sep")
+            getSep(opts.getUserOutSep(), false);
         else
-        {
-            // Get the separators to use
-            getSep(opts.getUserSep(), true);
-            if(opts.getUserOutSep() != "same as sep")
-                getSep(opts.getUserOutSep(), false);
-            else
-                OUT_SEP = SEP;
+            OUT_SEP = SEP;
 
-            // Read and get infos on the header
-            getHeader(opts.getInputFile());
+        // Read and get infos on the header
+        getHeader(opts.getInputFile());
 
-            // Get the indices of the columns to print
-            getIndices(opts.getColIndices(),
-                        opts.getUserCols());
+        // Get the indices of the columns to print
+        getIndices(opts.getColIndices(),
+                    opts.getUserCols());
 
-            // Print the desired columns
-            printUserColumns(opts.getInputFile());
-        }
+        // Print the desired columns
+        printUserColumns(opts.getInputFile());
     }
     else{
         if( CommandLineOptions::OPTS_VERSION == temp )

@@ -30,12 +30,17 @@ void CommandLineOptions::setup()
    progOptions.add_options()
          ( "help,h", "Display help menu." )
          ( "version,V", "Display program version number" )
-         ( "indices,I", "Display column index of the header" )
-         ( "file,f", po::value< std::string >( &inputFile ), "User-specified input file" )
-         ( "sep,s", po::value< std::string >( &userSep )->default_value( "TAB" ), "User-specified input separator")
-         ( "outSep", po::value< std::string >( &userOutSep )->default_value( "same as sep" ), "User-specified output separator" )
-         ( "cols,c", po::value< std::string >( &userCols )->default_value( "" ), "Columns to be displayed (seperated by a comma)" )
-         ( "colIndices,i", po::bool_switch( &colIndices )->default_value( false ), "Use column indices instead of name in -c option" );
+         ( "indices,I", "Display column indices of the header" )
+         ( "file,f", po::value< std::string >( &inputFile ),
+                            "User-specified input file" )
+         ( "sep,s", po::value< std::string >( &userSep )->default_value( "TAB" ),
+                            "User-specified input separator")
+         ( "outSep", po::value< std::string >( &userOutSep )->default_value( "same as sep" ),
+                            "User-specified output separator" )
+         ( "cols,c", po::value< std::string >( &userCols )->default_value( "" ),
+                            "Columns to be displayed (seperated by a comma)" )
+         ( "colIndices,i", po::bool_switch( &colIndices )->default_value( false ),
+                            "Use column indices instead of name in -c option" );
 
     options.add( progOptions );
 }
