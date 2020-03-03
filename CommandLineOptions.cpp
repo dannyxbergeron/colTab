@@ -32,7 +32,7 @@ void CommandLineOptions::setup()
          ( "version,V", "Display program version number" )
          ( "indices,I", "Display column indices of the header" )
          ( "file,f", po::value< std::string >( &inputFile ),
-                            "User-specified input file" )
+                            "User-specified input file (use 'IN' for input stream)" )
          ( "sep,s", po::value< std::string >( &userSep )->default_value( "TAB" ),
                             "User-specified input separator")
          ( "outSep", po::value< std::string >( &userOutSep )->default_value( "same as sep" ),
@@ -85,14 +85,17 @@ CommandLineOptions::statusReturn_e CommandLineOptions::parse( int argc, char* ar
       }
       else
       {
-         // Strip whitespaces from front/back of filename string
-         boost::algorithm::trim( inputFile );
+          if(inputFile != "IN")
+         {
+             // Strip whitespaces from front/back of filename string
+             boost::algorithm::trim( inputFile );
 
-         // resolve the filename to be fully-qualified
-         realpath( inputFile.c_str(), filename );
-         inputFile = filename;
+             // resolve the filename to be fully-qualified
+             realpath( inputFile.c_str(), filename );
+             inputFile = filename;
 
-         ret = validateFiles() ? OPTS_SUCCESS : OPTS_FAILURE;
+             ret = validateFiles() ? OPTS_SUCCESS : OPTS_FAILURE;
+         }
       }
 
       // We can check if a value is defaulted
