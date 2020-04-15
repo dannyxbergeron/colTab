@@ -70,6 +70,14 @@ void getHeader(const string& file)
         // Assigne the index of each column to its name
         columns[val] = count;
     }
+    // Put an empty colname if the last column is empty
+    if(header[header.size() -1] == SEP)
+    {
+        count++;
+        headerNames.push_back("");
+        columns[val] = count;
+    }
+
     // Get the total number of columns
     nbCol = columns.size();
     // Get enough space in the values vector to prevent unwanted resizing
@@ -173,6 +181,8 @@ void printUserColumns(const string& file)
             values[idx] = val;
             idx++;
         }
+        if(line[line.size() -1] == SEP)
+            values[idx] = "";
         // Print the value of the wanted col for each row
         printColValues(values, 0);
 
