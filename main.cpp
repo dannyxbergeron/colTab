@@ -36,6 +36,9 @@ void getSep(const string& sep, bool inSep)
             else
                 OUT_SEP = sep[0];
     }
+    // In case that the SEP is not TAB and the user wants OUT_SEP = TAB
+    else if(!inSep)
+        OUT_SEP = '\t';
 }
 
 // Get nb of columns and the actual values of the header
