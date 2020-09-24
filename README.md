@@ -1,7 +1,24 @@
+# Tool to easily work with table files containing header
 Simple tool to display only a sub portion of the columns in a file containing
 a table.
 
-usage:
+__Author__ : Danny Bergeron
+
+__Email__ :  _<danny.bergeron@usherbrooke.ca>_
+
+
+### Dependencies
+For the tool to work, you need to have installed the boost library
+```bash
+sudo apt-get install libboost-all-dev
+```
+
+### Comipling the tool
+```bash
+./activate main
+```
+
+### Usage
 ```bash
  colTab -f file -c columns [options]
 ```
